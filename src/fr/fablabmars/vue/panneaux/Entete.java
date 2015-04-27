@@ -16,11 +16,21 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+/**
+ * Entête graphique de l'application
+ * 
+ */
 public class Entete extends JPanel{
 
 	private static final long serialVersionUID = -3935964236389086371L;
 	private JLabel image;
 	
+	/**
+	 * Constructeur de l'entête
+	 * 
+	 * @param logo 
+	 * 			Adresse locale du logo FabLab
+	 */
 	public Entete(String logo){
 		super();
 		JTextPane textPane = new JTextPane();

@@ -10,12 +10,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import fr.fablabmars.vue.ControlledPane;
-import fr.fablabmars.vue.panneaux.SaveSuccess.BoutonListener;
 
+/**
+ * Panneau d'information sur l'echec de l'enregistrement
+ * 
+ * @author Guillaume Perouffe
+ *
+ */
 public class SaveFailure extends ControlledPane{
 
 	private static final long serialVersionUID = 978947793065234762L;
 
+	/**
+	 * Constructeur du panneau Echec d'enregistrement
+	 */
 	public SaveFailure(){
 		super();
 		JPanel grid = new JPanel();
@@ -31,6 +39,12 @@ public class SaveFailure extends ControlledPane{
 		this.add(grid);
 	}
 	
+	/**
+	 * Action Listener pour le bouton retour
+	 * 
+	 * @author Guillaume Perouffe
+	 *
+	 */
 	class BoutonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			controler.control(((JButton)e.getSource()).getText());
