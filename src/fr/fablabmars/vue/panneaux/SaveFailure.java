@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import fr.fablabmars.vue.ControlledPane;
-import fr.fablabmars.vue.panneaux.SaveSuccess.BoutonListener;
 
 public class SaveFailure extends ControlledPane{
 

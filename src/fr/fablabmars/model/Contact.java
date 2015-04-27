@@ -1,14 +1,51 @@
 package fr.fablabmars.model;
 
+/**
+ * Modélisation d'un contact.
+ * 
+ * @author Guillaume Perouffe
+ *
+ */
 public class Contact {
+	
+	/**
+	 * ID
+	 */
 	protected int id;
+	
+	/**
+	 * Nom
+	 */
 	protected String nom;
+	
+	/**
+	 * Prenom
+	 */
 	protected String prenom;
+	
+	/**
+	 * Etablissement d'origine
+	 */
 	protected String etab;
+	
+	/**
+	 * Addresse (format HTML)
+	 */
 	protected String adresse;
+	
+	/**
+	 * Numero de téléphone
+	 */
 	protected String numero;
+	
+	/**
+	 * Addresse email
+	 */
 	protected String email;
 	
+	/**
+	 * Constructeur par défaut
+	 */
 	public Contact(){
 		this.id = 0;
 		this.nom = "";
@@ -18,6 +55,17 @@ public class Contact {
 		this.numero = "";
 	}
 	
+	/**
+	 * Constructeur de Contact
+	 * 
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param etab
+	 * @param adresse
+	 * @param numero
+	 * @param email
+	 */
 	public Contact(int id,String nom,String prenom,String etab,String adresse,String numero,String email){
 		this.id = id;
 		this.nom = nom;
@@ -28,6 +76,13 @@ public class Contact {
 		this.email = email;
 	}
 	
+	/**
+	 * Constructeur par copie
+	 * 
+	 * @param C
+	 * 			Contact à copier
+	 * 
+	 */
 	public Contact(Contact C){
 		C.id = id;
 		C.nom = new String(nom);

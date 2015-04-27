@@ -1,12 +1,23 @@
 package fr.fablabmars.controler.menu;
 
-import java.sql.Connection;
-
 import fr.fablabmars.model.CardMenu;
-import fr.fablabmars.model.dao.ConnectionFabLab;
 
+/**
+ * Contrôleur du menu gauche.
+ * 
+ * @author Guillaume Perouffe
+ *
+ */
 public class MenuGaucheControler extends MenuAbstractControler{
 	
+	/**
+	 * Constructeur du menu gauche.
+	 * 
+	 * @param cardMenu
+	 * 			Observable retenant le menu courant.
+	 * 
+	 * @see CardMenu
+	 */
 	public MenuGaucheControler(CardMenu cardMenu){
 		super(cardMenu);
 	}
@@ -14,10 +25,10 @@ public class MenuGaucheControler extends MenuAbstractControler{
 	@Override
 	public void control(String bouton){
 		if(bouton.contains("Nouvel utilisateur")){
-			this.cardMenu.setPanel(1);
+			((CardMenu)this.obs).setPanel(1);
 		}
 		else if(bouton.contains("Chercher")){
-			this.cardMenu.setPanel(2);
+			((CardMenu)this.obs).setPanel(2);
 		}
 	}
 

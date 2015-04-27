@@ -18,9 +18,10 @@ import fr.fablabmars.controler.menu.MenuGaucheControler;
 import fr.fablabmars.controler.menu.MenuRechercheControler;
 import fr.fablabmars.controler.menu.MenuUtilisateurControler;
 import fr.fablabmars.model.CardMenu;
-import fr.fablabmars.model.QueryResult;
-import fr.fablabmars.vue.formulaire.RechercheFormulaire;
-import fr.fablabmars.vue.formulaire.UtilisateurFormulaire;
+import fr.fablabmars.model.Utilisateur;
+import fr.fablabmars.model.bdd.QueryResult;
+import fr.fablabmars.vue.formulaires.RechercheFormulaire;
+import fr.fablabmars.vue.formulaires.UtilisateurFormulaire;
 import fr.fablabmars.vue.panneaux.Accueil;
 import fr.fablabmars.vue.panneaux.ContainerGauche;
 import fr.fablabmars.vue.panneaux.Entete;
@@ -28,10 +29,18 @@ import fr.fablabmars.vue.panneaux.RechercheResultat;
 import fr.fablabmars.vue.panneaux.SaveFailure;
 import fr.fablabmars.vue.panneaux.SaveSuccess;
 
+/**
+ * Fenetre de l'application
+ * @author Guillaume Perouffe
+ *
+ */
 public class Fenetre extends JFrame{
 	
 	private static final long serialVersionUID = 8829645826951236028L;
 
+	/**
+	 * Contructeur de la fenêtre
+	 */
 	public Fenetre(){
 		super();
 		JPanel principal;
@@ -42,12 +51,12 @@ public class Fenetre extends JFrame{
 		containerGauche.setControler(controlMenu);
 		
 		ArrayList<ControlledPane> listPaneUtil = new ArrayList<ControlledPane>();
-		listPaneUtil.add(new UtilisateurFormulaire(new QueryResult()));
+		listPaneUtil.add(new UtilisateurFormulaire(new QueryResult<>()));
 		listPaneUtil.add(new SaveSuccess());
 		listPaneUtil.add(new SaveFailure());
 		
 		ArrayList<ControlledPane> listPaneRech = new ArrayList<ControlledPane>();
-		QueryResult qR = new QueryResult();
+		QueryResult<ArrayList<Utilisateur>> qR = new QueryResult<ArrayList<Utilisateur>>();
 		listPaneRech.add(new RechercheFormulaire(qR));
 		listPaneRech.add(new RechercheResultat(qR));
 		
@@ -67,7 +76,7 @@ public class Fenetre extends JFrame{
 		int posX = (int)tailleEcran.getWidth()/2-largeur/2;
 		int posY = (int)tailleEcran.getHeight()/2-hauteur/2;
 		
-		this.setMinimumSize(new Dimension((int)(800*4/3),800));
+		this.setMinimumSize(new Dimension((int)(610*4/3),610));
 		this.setLocation(posX,posY);
 		this.setResizable(true);
 		this.setSize(largeur, hauteur);
