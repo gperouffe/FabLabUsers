@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -55,81 +54,65 @@ public class RechercheResultat extends ResultPane{
 		JPanel grid3 = 			new JPanel();
 		JPanel grid4 = 			new JPanel();
 		JPanel grid5 = 			new JPanel();
-		JPanel grid6 = 			new JPanel();
-		JPanel grid7 = 			new JPanel();
-		JPanel border1 = 		new JPanel();
-		JPanel border2 = 		new JPanel();
+		JPanel border = 		new JPanel();
 		
 		this.setBackground(Color.WHITE);
-		GridLayout gl = new GridLayout(0,1);
+		GridLayout gl = new GridLayout(0,2);
 		gl.setVgap(15);
-		grid1.setBackground(Color.WHITE);
 		grid1.setLayout(gl);
-		grid2.setBackground(Color.WHITE);
-		grid2.setLayout(gl);
-		grid3.setBackground(Color.WHITE);
-		grid3.setLayout(gl);
-		grid4.setBackground(Color.WHITE);
-		grid4.setLayout(gl);
-		
-		
 		grid1.add(nomL);
-		grid2.add(nomR);
+		grid1.add(nomR);
 		grid1.add(prenomL);
-		grid2.add(prenomR);
+		grid1.add(prenomR);
 		grid1.add(adresseL);
-		grid2.add(adresseR);
+		grid1.add(adresseR);
 		grid1.add(numeroTelL);
-		grid2.add(numeroTelR);
+		grid1.add(numeroTelR);
 		grid1.add(emailL);
-		grid2.add(emailR);
-		grid3.add(cotisantL);
-		grid4.add(cotisant);
-		grid3.add(expirationL);
-		grid4.add(expiration);
-		grid3.add(proL);
-		grid4.add(pro);
-		grid3.add(nbFactureL);
-		grid4.add(nbFacture);
-		
-		GridLayout gl5 = new GridLayout(1,0);
-		gl5.setHgap(15);
-		grid5.setBackground(Color.WHITE);
-		grid5.setLayout(new BoxLayout(grid5,BoxLayout.LINE_AXIS));
-		grid5.add(grid1);
-		grid5.add(grid2);
+		grid1.add(emailR);
+		grid1.setBackground(Color.WHITE);
+		GridLayout gl2 = new GridLayout(0,2);
+		gl2.setVgap(15);
+		grid2.setLayout(gl2);
+		grid2.setBackground(Color.WHITE);
+		grid2.add(cotisantL);
+		grid2.add(cotisant);
+		grid2.add(expirationL);
+		grid2.add(expiration);
+		grid2.add(proL);
+		grid2.add(pro);
+		grid2.add(nbFactureL);
+		grid2.add(nbFacture);
+		GridLayout gl3 = new GridLayout(1,0);
+		gl3.setHgap(15);
+		grid3.setLayout(gl3);
+		grid3.add(grid1);
+		grid3.add(grid2);
+		grid3.setBackground(Color.WHITE);
+		GridLayout gl4 = new GridLayout(1,0);
+		gl4.setHgap(15);
+		grid4.setBackground(Color.WHITE);
+		grid4.setLayout(gl4);
+		grid4.add(facture);
+		grid4.add(cotiz);
+		grid4.add(modifier);
+		grid4.add(retour);
+		border.setLayout(new BorderLayout());
+		border.setBackground(Color.WHITE);
+		border.add(grid4, BorderLayout.NORTH);
+		grid5.setLayout(new GridLayout(0,1));
 		grid5.add(grid3);
-		grid5.add(grid4);
-		
-		GridLayout gl6 = new GridLayout(1,0);
-		gl6.setHgap(15);
-		grid6.setBackground(Color.WHITE);
-		grid6.setLayout(gl6);
-		grid6.add(facture);
-		grid6.add(cotiz);
-		grid6.add(modifier);
-		grid6.add(retour);
-		
-
-		border1.setLayout(new BorderLayout());
-		border1.setBackground(Color.WHITE);
-		border1.add(grid5, BorderLayout.NORTH);
-		border2.setLayout(new BorderLayout());
-		border2.setBackground(Color.WHITE);
-		border2.add(grid6, BorderLayout.NORTH);
-		grid7.setLayout(new GridLayout(0,1));
-		grid7.add(border1);
-		grid7.add(border2);
-		grid7.setBackground(Color.WHITE);
+		grid5.add(border);
+		grid5.setBackground(Color.WHITE);
 		
 
 		Border blackline;
 		blackline = BorderFactory.createLineBorder(Color.BLACK);
 		TitledBorder title;
 		title = BorderFactory.createTitledBorder(blackline, "Resultat de la recherche");
-		grid5.setBorder(title);
+		grid3.setBorder(title);
 		
-		this.add(grid7);
+		this.add(grid5);
 		qR.addObserver(this);
 			
 	}

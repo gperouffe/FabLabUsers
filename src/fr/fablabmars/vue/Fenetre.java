@@ -67,7 +67,7 @@ public class Fenetre extends JFrame{
 		int posX = (int)tailleEcran.getWidth()/2-largeur/2;
 		int posY = (int)tailleEcran.getHeight()/2-hauteur/2;
 		
-		this.setMinimumSize(new Dimension((int)(600*4/3),600));
+		this.setMinimumSize(new Dimension((int)(800*4/3),800));
 		this.setLocation(posX,posY);
 		this.setResizable(true);
 		this.setSize(largeur, hauteur);
