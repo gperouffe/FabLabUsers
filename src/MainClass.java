@@ -1,8 +1,5 @@
 
 
-import java.sql.Connection;
-
-import fr.fablabmars.model.dao.ConnectionFabLab;
 import fr.fablabmars.vue.Fenetre;
 
 public class MainClass {
