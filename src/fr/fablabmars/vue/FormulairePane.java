@@ -28,7 +28,6 @@ public abstract class FormulairePane extends ControlledPane implements Observer{
 		this.qR=qR;
 	}
 	
-	
 	@Override
 	public abstract void update(Observable obs);
 	

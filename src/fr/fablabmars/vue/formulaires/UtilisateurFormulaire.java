@@ -155,7 +155,4 @@ public class UtilisateurFormulaire extends FormulairePane{
 			controler.control(((QueryResult)obs).getState()==1?"Succès":"Echec");
 		}
 	}
-	
-	
-	
 }

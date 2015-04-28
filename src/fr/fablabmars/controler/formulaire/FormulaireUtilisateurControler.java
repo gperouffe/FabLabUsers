@@ -23,6 +23,7 @@ public class FormulaireUtilisateurControler extends FormulaireAbstractControler<
 	 *
 	 *@see QueryResult
 	 */
+	
 	public FormulaireUtilisateurControler(QueryResult qR){
 		super(DAOFactory.getDAOUtilisateur(),qR);
 	}

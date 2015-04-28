@@ -46,6 +46,6 @@ public class FormulaireRechercheControler extends FormulaireAbstractControler<Ar
 			else{
 				((QueryResult)this.obs).failure();
 			}
-		} 
+		}
 	}
 }

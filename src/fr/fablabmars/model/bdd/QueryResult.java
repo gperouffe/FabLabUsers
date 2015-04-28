@@ -54,6 +54,7 @@ public class QueryResult implements Observable {
 	public void failure(){
 		success=0;
 		notifyObservers();
+
 	}
 	
 	@Override

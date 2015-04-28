@@ -35,7 +35,11 @@ public class ConnectionFabLab{
 	/**
 	 * Instanciation de l'objet Connection
 	 * 
+<<<<<<< HEAD
 	 * @return	Objet Connection
+=======
+	 * @return	Objet connection
+>>>>>>> refs/heads/JavaDoc-Architecture
 	 */
 	public static Connection getInstance(){
 		try {
