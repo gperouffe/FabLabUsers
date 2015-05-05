@@ -1,60 +1,64 @@
 package fr.fablabmars.model;
-import java.util.Scanner;
 
-
+/**
+ * Modélisation d'une facture.
+ * 
+ * @author Guillaume Perouffe
+ *
+ */
 public class Facture {
-	private Utilisateur U;
-	private String prestation = "";
-	private FicheTarifaire Fiche;
-	private double tempsUtilisation;
-	private double tarif=-1;
-	private double total = 0;
 	
-	public Facture(FicheTarifaire F, Utilisateur U){
+	/**
+	 * Destinataire de la facture
+	 * 
+	 * @see Utilisateur
+	 */
+	private Utilisateur U;
+	
+	/**
+	 * Intitulé de la prestation 
+	 */
+	private String prestation = "";
+	
+	/**
+	 * Durée de la prestation
+	 */
+	private double tempsUtilisation;
+	
+	/**
+	 * Tarif horaire
+	 */
+	private double tarif;
+	
+	/**
+	 * Total à payer
+	 */
+	private double total;
+	
+	/**
+	 * Constructeur de Facture 
+	 * 
+	 * @param U
+	 *			Destinataire de la facture 
+	 * @param presta
+	 * 			Type de prestation
+	 * @param tarif
+	 * 			Tarif de la prestation
+	 * @param temps
+	 *			Durée de la prestation
+	 *
+	 *@see Facture#U
+	 *@see Facture#prestation
+	 *@see Facture#tarif
+	 *@see Facture#tempsUtilisation
+	 */
+	public Facture(Utilisateur U,String presta, double tarif, double temps){
 		this.U = U;
-		U.prestation();
-		Fiche = F;
-	}
-
-	public void edition(){
-		Scanner sc = new Scanner(System.in);
-		String ok = new String("N");
-		@SuppressWarnings("unused")
-		String videBuffer = new String("");
-		do{
-			System.out.println("EDITION DE FACTURE\n");
-			System.out.println(Fiche);
-			tarif = -1;
-			tempsUtilisation=0;
-			while(tarif==-1){
-				System.out.println("Entrez le numero de la prestation : ");
-				if(sc.hasNextInt()){
-					int i = sc.nextInt();
-					tarif = Fiche.tarifNumero(i);
-					prestation = Fiche.prestaNumero(i);
-					videBuffer=sc.nextLine();
-				}
-				else{
-					videBuffer=sc.nextLine();
-				}
-			}
-			while(tempsUtilisation==0){
-				System.out.println("Entrez le temps d'utilisation (heures) : ");
-				if(sc.hasNextDouble()){
-					tempsUtilisation = sc.nextDouble();
-					videBuffer=sc.nextLine();
-				}
-				else{
-					videBuffer=sc.nextLine();
-				}
-			}
-			total = tempsUtilisation*tarif;
-			System.out.println(this);
-			System.out.println("Valider cette facture?Y/N");
-			ok = sc.nextLine();
-		}while(!"Y".equals(ok));
-		System.out.println("FIN EDITION");
-		sc.close();
+		this.prestation=presta;
+		this.tarif = tarif;
+		this.tempsUtilisation = temps;
+		this.total= temps*tarif;
+		
 	}
 
 	@Override

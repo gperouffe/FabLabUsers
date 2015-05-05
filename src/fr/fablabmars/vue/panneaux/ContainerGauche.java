@@ -7,18 +7,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import javax.swing.SwingConstants;
 
 import fr.fablabmars.vue.ControlledPane;
 
+/**
+ * Container du bandeau de menu gauche
+ * 
+ * @author Guillaume Perouffe
+ *
+ */
 public class ContainerGauche extends ControlledPane{
 
 	private static final long serialVersionUID = 4857027850134195913L;
 	
+	/**
+	 * Constructeur du container gauche
+	 */
 	public ContainerGauche(){
 		super();
 		JPanel grid1;
@@ -43,6 +49,12 @@ public class ContainerGauche extends ControlledPane{
 		chercheContact.addActionListener(new BoutonListener());
 		}
 	
+	/**
+	 * Contrôleur des boutons du bandeau de menu gauche
+	 * 
+	 * @author Guillaume Perouffe
+	 *
+	 */
 	class BoutonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			controler.control(((JToggleButton)e.getSource()).getText());
