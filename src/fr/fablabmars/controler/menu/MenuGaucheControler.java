@@ -24,7 +24,10 @@ public class MenuGaucheControler extends MenuAbstractControler{
 	
 	@Override
 	public void control(String bouton){
-		if(bouton.contains("Nouvel utilisateur")){
+		if(bouton.contains("Accueil")){
+			((CardMenu)this.obs).setPanel(0);
+		}
+		else if(bouton.contains("Nouvel utilisateur")){
 			((CardMenu)this.obs).setPanel(1);
 		}
 		else if(bouton.contains("Chercher")){
