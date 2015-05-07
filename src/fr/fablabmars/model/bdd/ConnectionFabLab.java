@@ -35,11 +35,7 @@ public class ConnectionFabLab{
 	/**
 	 * Instanciation de l'objet Connection
 	 * 
-<<<<<<< HEAD
 	 * @return	Objet Connection
-=======
-	 * @return	Objet connection
->>>>>>> refs/heads/JavaDoc-Architecture
 	 */
 	public static Connection getInstance(){
 		try {
@@ -54,8 +50,37 @@ public class ConnectionFabLab{
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+				return null;
 			}	
 		}			
 		return connect;	
+	}
+
+	public static String getUrl() {
+		return url;
+	}
+
+	public static void setUrl(String url) {
+		ConnectionFabLab.url = url;
+		connect = null;
+	}
+
+	public static String getUser() {
+		return user;
+	}
+
+	public static void setUser(String user) {
+		ConnectionFabLab.user = user;
+		connect = null;
+
+	}
+
+	public static String getPasswd() {
+		return passwd;
+	}
+
+	public static void setPasswd(String passwd) {
+		ConnectionFabLab.passwd = passwd;
+		connect = null;
 	}
 }

@@ -22,7 +22,7 @@ public class FormulaireRechercheControler extends FormulaireAbstractControler<Ar
 	 * 			Observable dans lequel on enregistre le résultat de la recherche.
 	 * 
 	 * @see FormulaireAbstractControler#FormulaireAbstractControler(fr.fablabmars.model.bdd.DAO, QueryResult)
-	 * @see QueryResult
+	 * @see FindResult
 	 */
 	public FormulaireRechercheControler(FindResult<ArrayList<Utilisateur>> fR) {
 		super(DAOFactory.getDAOUtilisateur(), fR);
@@ -40,7 +40,7 @@ public class FormulaireRechercheControler extends FormulaireAbstractControler<Ar
 		if(this.dao instanceof UtilisateurDAO){
 			UtilisateurDAO utilDao= (UtilisateurDAO)dao;
 			
-			ArrayList<Utilisateur> resultat = utilDao.findNomPrenom(nomPrenom);
+			ArrayList<Utilisateur> resultat = utilDao.findNomPrenom(nomPrenom.get(0),nomPrenom.get(1));
 			if(resultat != null&& resultat.size()!=0){
 				((FindResult<ArrayList<Utilisateur>>)this.obs).success(resultat);
 			}

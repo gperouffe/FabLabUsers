@@ -191,8 +191,9 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 			return null;
 		}
 	}
+	
+	public ArrayList<Utilisateur> findNomPrenom(String nom, String prenom) {
 
-	public ArrayList<Utilisateur> findNomPrenom(ArrayList<String> nomPrenom) {
 		if(this.connect!=null){
 			ArrayList<Utilisateur> utils = new ArrayList<Utilisateur>();
 			
@@ -203,8 +204,8 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 			try{
 				prepare = this.connect.prepareStatement(query);
 	
-				prepare.setString(1, nomPrenom.get(0));
-				prepare.setString(2, nomPrenom.get(1));
+				prepare.setString(1, nom);
+				prepare.setString(2, prenom);
 				
 				ResultSet res = prepare.executeQuery();
 				 

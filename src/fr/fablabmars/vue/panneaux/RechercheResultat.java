@@ -17,6 +17,7 @@ import javax.swing.border.TitledBorder;
 
 import fr.fablabmars.model.Utilisateur;
 import fr.fablabmars.model.bdd.FindResult;
+import fr.fablabmars.model.bdd.QueryResult;
 import fr.fablabmars.observer.Observable;
 import fr.fablabmars.vue.ResultPane;
 
@@ -43,11 +44,11 @@ public class RechercheResultat extends ResultPane{
 	/**
 	 * Constructeur du panneau de résultats
 	 * 
-	 * @param fR
+	 * @param qR
 	 * 			Indicateur de succès observable des requêtes
 	 */
-	public RechercheResultat(FindResult<ArrayList<Utilisateur>> fR){
-		super(fR);
+	public RechercheResultat(FindResult qR){
+		super(qR);
 		JLabel nomL = 			new JLabel("Nom");
 		JLabel prenomL = 		new JLabel("Prénom");
 		JLabel etabL = 		new JLabel("Etablissement");
@@ -146,7 +147,7 @@ public class RechercheResultat extends ResultPane{
 		grid5.setBorder(title);
 		
 		this.add(grid7);
-		fR.addObserver(this);
+		qR.addObserver(this);
 			
 	}
 
@@ -163,21 +164,29 @@ public class RechercheResultat extends ResultPane{
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Observable obs) {
-		if(obs == qR){					
-			@SuppressWarnings("unchecked")
-			Utilisateur util = (((((FindResult<ArrayList<Utilisateur>>)qR).getData())).get(0));
-			nomR.setText(util.getNom());
-			prenomR.setText(util.getPrenom());
-			etabR.setText(util.getEtab());
-			adresseR.setText(util.getAdresse());
-			numeroTelR.setText(util.getNumero());
-			emailR.setText(util.getEmail());
-			cotisant.setText(util.isCotisant()?"Oui":"Non");
-			pro.setText(util.isPro()?"Oui":"Non");
-			expiration.setText("");
-			nbFacture.setText("");
-		}	
+		if(obs == qR){
+			try{
+				if((((FindResult<ArrayList<Utilisateur>>)qR).getData())!=null){
+					Utilisateur util = (((((FindResult<ArrayList<Utilisateur>>)qR).getData())).get(0));
+					nomR.setText(util.getNom());
+					prenomR.setText(util.getPrenom());
+					etabR.setText(util.getEtab());
+					adresseR.setText(util.getAdresse());
+					numeroTelR.setText(util.getNumero());
+					emailR.setText(util.getEmail());
+					cotisant.setText(util.isCotisant()?"Oui":"Non");
+					pro.setText(util.isPro()?"Oui":"Non");
+					expiration.setText("");
+					nbFacture.setText("");
+				}
+					
+			}
+			catch(NullPointerException e){
+				e.printStackTrace();
+			}
+		}
 	}
 }

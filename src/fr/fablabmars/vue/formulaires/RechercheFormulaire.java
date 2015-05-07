@@ -35,9 +35,6 @@ public class RechercheFormulaire extends FormulairePane{
 	private static final long serialVersionUID = -3341160299724135201L;
 	private JTextField nom = 		new JTextField("");
 	private JTextField prenom = 	new JTextField("");
-	/**
-	 * 
-	 */
 	private FormulaireRechercheControler fac;
 	
 	/**

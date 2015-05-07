@@ -21,9 +21,9 @@ import fr.fablabmars.model.CardMenu;
 import fr.fablabmars.model.Utilisateur;
 import fr.fablabmars.model.bdd.FindResult;
 import fr.fablabmars.model.bdd.QueryResult;
+import fr.fablabmars.vue.formulaires.Accueil;
 import fr.fablabmars.vue.formulaires.RechercheFormulaire;
 import fr.fablabmars.vue.formulaires.UtilisateurFormulaire;
-import fr.fablabmars.vue.panneaux.Accueil;
 import fr.fablabmars.vue.panneaux.ContainerGauche;
 import fr.fablabmars.vue.panneaux.Entete;
 import fr.fablabmars.vue.panneaux.RechercheResultat;
@@ -62,7 +62,7 @@ public class Fenetre extends JFrame{
 		listPaneRech.add(new RechercheResultat(qR));
 		
 		ArrayList<ControlledPane> listPaneContainer = new ArrayList<ControlledPane>();
-		listPaneContainer.add(new Accueil());
+		listPaneContainer.add(new Accueil(new QueryResult()));
 		listPaneContainer.add(new CardMenuPanel(listPaneUtil,new MenuUtilisateurControler(new CardMenu())));
 		listPaneContainer.add(new CardMenuPanel(listPaneRech,new MenuRechercheControler(new CardMenu())));
 		CardMenuPanel containerDroit = new CardMenuPanel(listPaneContainer,controlMenu);
