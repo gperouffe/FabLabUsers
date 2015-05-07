@@ -65,7 +65,10 @@ public class Accueil extends FormulairePane{
 		GridLayout gl1 = new GridLayout(0,1);
 		gl1.setVgap(15);
 		grid1.setLayout(gl1);
-		grid1.add(new JLabel("<html>Bienvenue sur FablabUsers,<br>le logiciel de gestion du Fablab Marseille.</html>"));
+		JLabel phraseAcceuil = new JLabel("<html>Bienvenue sur FablabUsers,<br>le logiciel de gestion du Fablab Marseille.</html>");
+		phraseAcceuil.setHorizontalAlignment(JLabel.CENTER);
+		phraseAcceuil.setVerticalAlignment(JLabel.CENTER);
+		grid1.add(phraseAcceuil);
 
 		
 		GridLayout gl2 = new GridLayout(0,2);
@@ -85,6 +88,8 @@ public class Accueil extends FormulairePane{
 		gl3.setVgap(15);
 		grid3.setLayout(gl3);
 		grid3.add(connect);
+		connectState.setHorizontalAlignment(JLabel.CENTER);
+		connectState.setVerticalAlignment(JLabel.CENTER);
 		grid3.add(connectState);
 		grid3.setBackground(Color.WHITE);
 		border1.add(grid3, BorderLayout.NORTH);

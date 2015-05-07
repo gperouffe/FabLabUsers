@@ -84,7 +84,7 @@ public class Fenetre extends JFrame{
 		this.setTitle("FablabUsers");
 
 		try {
-			Image img = ImageIO.read(new File("Icone.png"));
+			Image img = ImageIO.read(new File("ressources/Icone.png"));
 			this.setIconImage(img);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,7 +94,7 @@ public class Fenetre extends JFrame{
 		principal.setBackground(Color.WHITE);
 		principal.setLayout(new BorderLayout());
 		
-		entete = new Entete("Logo150x150.png");
+		entete = new Entete("ressources/Logo150x150.png");
 		principal.add(entete, BorderLayout.NORTH);
 		
 		principal.add(containerGauche,BorderLayout.WEST);
