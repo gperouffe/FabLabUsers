@@ -47,7 +47,7 @@ public class RechercheResultat extends ResultPane{
 	 * @param qR
 	 * 			Indicateur de succès observable des requêtes
 	 */
-	public RechercheResultat(QueryResult qR){
+	public RechercheResultat(FindResult qR){
 		super(qR);
 		JLabel nomL = 			new JLabel("Nom");
 		JLabel prenomL = 		new JLabel("Prénom");
@@ -164,27 +164,25 @@ public class RechercheResultat extends ResultPane{
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Observable obs) {
-		if(obs instanceof FindResult){
+		if(obs == qR){
 			try{
-				if (((FindResult<?>)obs).getData() instanceof ArrayList<?>){
-					if(((ArrayList<?>)(((FindResult<?>)obs).getData())).size()==1
-							&&((ArrayList<?>)(((FindResult<?>)obs).getData())).get(0) instanceof Utilisateur){
-					
-						Utilisateur util = new Utilisateur(((ArrayList<Utilisateur>)(((FindResult<ArrayList<Utilisateur>>)obs).getData())).get(0));
-						nomR.setText(util.getNom());
-						prenomR.setText(util.getPrenom());
-						etabR.setText(util.getEtab());
-						adresseR.setText(util.getAdresse());
-						numeroTelR.setText(util.getNumero());
-						emailR.setText(util.getEmail());
-						cotisant.setText(util.isCotisant()?"Oui":"Non");
-						pro.setText(util.isPro()?"Oui":"Non");
-						expiration.setText("");
-						nbFacture.setText("");
-					}	
+				if((((FindResult<ArrayList<Utilisateur>>)qR).getData())!=null){
+					Utilisateur util = (((((FindResult<ArrayList<Utilisateur>>)qR).getData())).get(0));
+					nomR.setText(util.getNom());
+					prenomR.setText(util.getPrenom());
+					etabR.setText(util.getEtab());
+					adresseR.setText(util.getAdresse());
+					numeroTelR.setText(util.getNumero());
+					emailR.setText(util.getEmail());
+					cotisant.setText(util.isCotisant()?"Oui":"Non");
+					pro.setText(util.isPro()?"Oui":"Non");
+					expiration.setText("");
+					nbFacture.setText("");
 				}
+					
 			}
 			catch(NullPointerException e){
 				e.printStackTrace();

@@ -137,6 +137,7 @@ public class UtilisateurFormulaire extends FormulairePane{
 	 *
 	 */
 	class BoutonListener implements ActionListener{
+		@SuppressWarnings({ "unchecked", "rawtypes" })
 		public void actionPerformed(ActionEvent e) {
 			ArrayList list = new ArrayList();
 			list.add(nom.getText());

@@ -29,8 +29,10 @@ public class ContainerGauche extends ControlledPane{
 		super();
 		JPanel grid1;
 		ButtonGroup groupe = new ButtonGroup();
+		JToggleButton acc = new JToggleButton("Accueil");
 		JToggleButton nvUser = new JToggleButton("Nouvel utilisateur");
 		JToggleButton chercheContact = new JToggleButton("Chercher un utilisateur");
+		groupe.add(acc);
 		groupe.add(nvUser);
 		groupe.add(chercheContact);
 		
@@ -41,10 +43,12 @@ public class ContainerGauche extends ControlledPane{
 		GridLayout gl = new GridLayout(0,1);
 		gl.setVgap(10);
 		grid1.setLayout(gl);
+		grid1.add(acc);
 		grid1.add(nvUser);
 		grid1.add(chercheContact);
 		this.add(grid1,BorderLayout.NORTH);
 		
+		acc.addActionListener(new BoutonListener());
 		nvUser.addActionListener(new BoutonListener());
 		chercheContact.addActionListener(new BoutonListener());
 		}

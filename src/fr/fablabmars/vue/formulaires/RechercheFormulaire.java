@@ -18,6 +18,8 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import fr.fablabmars.controler.formulaire.FormulaireRechercheControler;
+import fr.fablabmars.model.Utilisateur;
+import fr.fablabmars.model.bdd.FindResult;
 import fr.fablabmars.model.bdd.QueryResult;
 import fr.fablabmars.observer.Observable;
 import fr.fablabmars.vue.FormulairePane;
@@ -33,21 +35,18 @@ public class RechercheFormulaire extends FormulairePane{
 	private static final long serialVersionUID = -3341160299724135201L;
 	private JTextField nom = 		new JTextField("");
 	private JTextField prenom = 	new JTextField("");
-	/**
-	 * 
-	 */
 	private FormulaireRechercheControler fac;
 	
 	/**
-	 * Constructeur du formaulaire de recherche
+	 * Constructeur du formulaire de recherche
 	 * 
-	 * @param qR
+	 * @param fR
 	 * 			Indicateur de succès observable
 	 */
-	public RechercheFormulaire(QueryResult qR){
-		super(qR);
-		qR.addObserver(this);
-		this.fac = new FormulaireRechercheControler(qR);
+	public RechercheFormulaire(FindResult<ArrayList<Utilisateur>> fR){
+		super(fR);
+		fR.addObserver(this);
+		this.fac = new FormulaireRechercheControler(fR);
 		
 		JButton recherche = 	new JButton("Recherche");
 		JLabel nomL = 			new JLabel("Nom");
