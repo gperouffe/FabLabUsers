@@ -47,6 +47,7 @@ public class Accueil extends FormulairePane{
 		fac = new FormulaireAcceuilControler(qR);
 
 		JButton connect = 	new JButton("Connexion");
+		JButton disconnect = 	new JButton("Déconnexion");
 		JLabel servL = 			new JLabel("Serveur");
 		JLabel loginL = 		new JLabel("Login");
 		JLabel passwordL = 		new JLabel("Mot de Passe                              ");
@@ -84,16 +85,18 @@ public class Accueil extends FormulairePane{
 		grid1.add(grid2);
 		grid1.setBackground(Color.WHITE);
 		
-		GridLayout gl3 = new GridLayout(1,0);
+		GridLayout gl3 = new GridLayout(0,2);
 		gl3.setVgap(15);
 		grid3.setLayout(gl3);
 		grid3.add(connect);
 		connectState.setHorizontalAlignment(JLabel.CENTER);
 		connectState.setVerticalAlignment(JLabel.CENTER);
 		grid3.add(connectState);
+		grid3.add(disconnect);
 		grid3.setBackground(Color.WHITE);
 		border1.add(grid3, BorderLayout.NORTH);
 		connect.addActionListener(new ConnectListener());
+		disconnect.addActionListener(new DisconnectListener());
 		border1.setBackground(Color.WHITE);
 		grid1.add(border1);
 		border2.add(grid1, BorderLayout.NORTH);
@@ -125,14 +128,21 @@ public class Accueil extends FormulairePane{
 		}
 	}
 	
+	class DisconnectListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {			
+			fac.control(null);
+		}
+	}
+	
 	@Override
 	public void update(Observable obs) {
 		if(obs == qR){
 			if(qR.getState()==0){
-				connectState.setText("Echec de la connexion");
+				connectState.setText("Non connecté");
 			}
 			else if(qR.getState()==1){
 				connectState.setText("Connexion établie");
+				password.setText("");
 			}
 		}
 	}

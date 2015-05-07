@@ -46,7 +46,8 @@ public class Fenetre extends JFrame{
 		super();
 		JPanel principal;
 		Entete entete;
-		ContainerGauche containerGauche = new ContainerGauche();
+		QueryResult etatConn = new QueryResult();
+		ContainerGauche containerGauche = new ContainerGauche(etatConn);
 		CardMenu menu = new CardMenu();
 		MenuGaucheControler controlMenu = new MenuGaucheControler(menu);
 		containerGauche.setControler(controlMenu);
@@ -62,7 +63,7 @@ public class Fenetre extends JFrame{
 		listPaneRech.add(new RechercheResultat(qR));
 		
 		ArrayList<ControlledPane> listPaneContainer = new ArrayList<ControlledPane>();
-		listPaneContainer.add(new Accueil(new QueryResult()));
+		listPaneContainer.add(new Accueil(etatConn));
 		listPaneContainer.add(new CardMenuPanel(listPaneUtil,new MenuUtilisateurControler(new CardMenu())));
 		listPaneContainer.add(new CardMenuPanel(listPaneRech,new MenuRechercheControler(new CardMenu())));
 		CardMenuPanel containerDroit = new CardMenuPanel(listPaneContainer,controlMenu);
