@@ -1,5 +1,6 @@
 package fr.fablabmars.controler.formulaire;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fr.fablabmars.model.bdd.ConnectionFabLab;
@@ -29,16 +30,30 @@ public class FormulaireAcceuilControler extends FormulaireAbstractControler<Arra
 	 */
 	@Override
 	public void control(ArrayList<String> infosConn) {
-		ConnectionFabLab.setUrl(infosConn.get(0));
-		ConnectionFabLab.setUser(infosConn.get(1));
-		ConnectionFabLab.setPasswd(infosConn.get(2));
 		
-		if(ConnectionFabLab.getInstance()==null){
-			((QueryResult)this.obs).failure();
+		if(infosConn!=null){
+			ConnectionFabLab.setUrl(infosConn.get(0));
+			ConnectionFabLab.setUser(infosConn.get(1));
+			ConnectionFabLab.setPasswd(infosConn.get(2));
+		
+			if(ConnectionFabLab.getInstance()==null){
+				((QueryResult)this.obs).failure();
+			}
+			else{
+				((QueryResult)this.obs).success();
+			}
 		}
 		else{
-			((QueryResult)this.obs).success();
-
+			try {
+				if(ConnectionFabLab.getInstance()!=null){
+					ConnectionFabLab.getInstance().close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			finally{
+				((QueryResult)this.obs).failure();
+			}
 		}
 	}
 }

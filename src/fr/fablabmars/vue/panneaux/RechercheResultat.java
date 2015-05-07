@@ -17,7 +17,6 @@ import javax.swing.border.TitledBorder;
 
 import fr.fablabmars.model.Utilisateur;
 import fr.fablabmars.model.bdd.FindResult;
-import fr.fablabmars.model.bdd.QueryResult;
 import fr.fablabmars.observer.Observable;
 import fr.fablabmars.vue.ResultPane;
 
@@ -47,7 +46,7 @@ public class RechercheResultat extends ResultPane{
 	 * @param qR
 	 * 			Indicateur de succès observable des requêtes
 	 */
-	public RechercheResultat(FindResult qR){
+	public RechercheResultat(FindResult<ArrayList<Utilisateur>> qR){
 		super(qR);
 		JLabel nomL = 			new JLabel("Nom");
 		JLabel prenomL = 		new JLabel("Prénom");

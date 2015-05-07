@@ -46,7 +46,8 @@ public class Fenetre extends JFrame{
 		super();
 		JPanel principal;
 		Entete entete;
-		ContainerGauche containerGauche = new ContainerGauche();
+		QueryResult etatConn = new QueryResult();
+		ContainerGauche containerGauche = new ContainerGauche(etatConn);
 		CardMenu menu = new CardMenu();
 		MenuGaucheControler controlMenu = new MenuGaucheControler(menu);
 		containerGauche.setControler(controlMenu);
@@ -62,7 +63,7 @@ public class Fenetre extends JFrame{
 		listPaneRech.add(new RechercheResultat(qR));
 		
 		ArrayList<ControlledPane> listPaneContainer = new ArrayList<ControlledPane>();
-		listPaneContainer.add(new Accueil(new QueryResult()));
+		listPaneContainer.add(new Accueil(etatConn));
 		listPaneContainer.add(new CardMenuPanel(listPaneUtil,new MenuUtilisateurControler(new CardMenu())));
 		listPaneContainer.add(new CardMenuPanel(listPaneRech,new MenuRechercheControler(new CardMenu())));
 		CardMenuPanel containerDroit = new CardMenuPanel(listPaneContainer,controlMenu);
@@ -84,7 +85,7 @@ public class Fenetre extends JFrame{
 		this.setTitle("FablabUsers");
 
 		try {
-			Image img = ImageIO.read(new File("Icone.png"));
+			Image img = ImageIO.read(new File("ressources/Icone.png"));
 			this.setIconImage(img);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,7 +95,7 @@ public class Fenetre extends JFrame{
 		principal.setBackground(Color.WHITE);
 		principal.setLayout(new BorderLayout());
 		
-		entete = new Entete("Logo150x150.png");
+		entete = new Entete("ressources/Logo150x150.png");
 		principal.add(entete, BorderLayout.NORTH);
 		
 		principal.add(containerGauche,BorderLayout.WEST);
