@@ -13,29 +13,18 @@ import fr.fablabmars.model.bdd.QueryResult;
  * 			Type des données reçues depuis la vue
  */
 public abstract class FormulaireAbstractControler<T> extends AbstractControler {
-	
-	/**
-	 * Objet d'accès aux données.
-	 * 
-	 * @see DAO
-	 */
-	protected DAO<?> dao;
-	
+		
 	/**
 	 * Constructeur du contrôleur abstrait de formulaire.
 	 * 
-	 * @param dao
-	 * 			Objet d'accès aux données.
 	 * @param qR
 	 *          Observable recevant le résultat de la requête.
 	 * 
-	 * @see FormulaireAbstractControler#dao
 	 * @see QueryResult
 	 * @see AbstractControler#AbstractControler(fr.fablabmars.observer.Observable)
 	 */
-	public FormulaireAbstractControler(DAO<?> dao,QueryResult qR){
+	public FormulaireAbstractControler(QueryResult qR){
 		super(qR);
-		this.dao=dao;
 	}
 	
 	/**

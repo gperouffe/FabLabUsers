@@ -25,7 +25,7 @@ public class FormulaireUtilisateurControler extends FormulaireAbstractControler<
 	 */
 	
 	public FormulaireUtilisateurControler(QueryResult qR){
-		super(DAOFactory.getDAOUtilisateur(),qR);
+		super(qR);
 	}
 
 	/**
@@ -36,15 +36,14 @@ public class FormulaireUtilisateurControler extends FormulaireAbstractControler<
 	 */
 	@Override
 	public void control(ArrayList<?> list) {
-		if(this.dao instanceof UtilisateurDAO){
-			UtilisateurDAO utilDao= (UtilisateurDAO)dao;
-			if(utilDao.create(new Utilisateur((String)list.get(0),(String)list.get(1),(String)list.get(2),(String)list.get(3),(String)list.get(4),(String)list.get(5),(Boolean)list.get(6)))){
-				((QueryResult)this.obs).success();
-			}
-			else{
-				((QueryResult)this.obs).failure();
-			}
+		
+		UtilisateurDAO utilDao= DAOFactory.getDAOUtilisateur();
+		if(utilDao.create(new Utilisateur((String)list.get(0),(String)list.get(1),(String)list.get(2),(String)list.get(3),(String)list.get(4),(String)list.get(5),(Boolean)list.get(6)))){
+			((QueryResult)this.obs).success();
+		}
+		else{
+			((QueryResult)this.obs).failure();
 		}
 	}
-
 }
+

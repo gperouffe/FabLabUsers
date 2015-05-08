@@ -12,8 +12,7 @@ import javax.swing.JToggleButton;
 
 import fr.fablabmars.model.bdd.QueryResult;
 import fr.fablabmars.observer.Observable;
-import fr.fablabmars.observer.Observer;
-import fr.fablabmars.vue.ControlledPane;
+import fr.fablabmars.vue.ResultPane;
 
 /**
  * Container du bandeau de menu gauche
@@ -21,7 +20,7 @@ import fr.fablabmars.vue.ControlledPane;
  * @author Guillaume Perouffe
  *
  */
-public class ContainerGauche extends ControlledPane implements Observer{
+public class ContainerGauche extends ResultPane{
 
 	private static final long serialVersionUID = 4857027850134195913L;
 	private JToggleButton nvUser = new JToggleButton("Nouvel utilisateur");
@@ -31,8 +30,8 @@ public class ContainerGauche extends ControlledPane implements Observer{
 	 * Constructeur du container gauche
 	 */
 	public ContainerGauche(QueryResult etatConn){
-		super();
-		etatConn.addObserver(this);
+		super(etatConn);
+		
 		JPanel grid1;
 		ButtonGroup groupe = new ButtonGroup();
 		JToggleButton acc = new JToggleButton("Accueil");
@@ -73,12 +72,12 @@ public class ContainerGauche extends ControlledPane implements Observer{
 
 	@Override
 	public void update(Observable obs) {
-		if(obs instanceof QueryResult){
-			if(((QueryResult)obs).getState()==1){
+		if(obs == this.qR){
+			if(qR.getState()==1){
 				nvUser.setEnabled(true);
 				chercheContact.setEnabled(true);
 			}
-			if(((QueryResult)obs).getState()==0){
+			if(qR.getState()==0){
 				nvUser.setEnabled(false);
 				chercheContact.setEnabled(false);
 			}

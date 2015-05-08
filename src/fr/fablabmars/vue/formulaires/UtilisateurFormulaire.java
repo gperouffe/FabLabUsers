@@ -56,7 +56,6 @@ public class UtilisateurFormulaire extends FormulairePane{
 	 */
 	public UtilisateurFormulaire(QueryResult qR){
 		super(qR);
-		qR.addObserver(this);
 		this.fac = new FormulaireUtilisateurControler(qR);
 		
 		JButton enregistrer = 	new JButton("Enregistrer");

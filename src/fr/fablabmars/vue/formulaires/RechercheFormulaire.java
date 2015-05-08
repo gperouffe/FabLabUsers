@@ -34,7 +34,7 @@ public class RechercheFormulaire extends FormulairePane{
 
 	private static final long serialVersionUID = -3341160299724135201L;
 	private JTextField nom = 		new JTextField("");
-	private JTextField prenom = 	new JTextField("");
+	private JTextField email = 	new JTextField("");
 	private FormulaireRechercheControler fac;
 	
 	/**
@@ -43,14 +43,13 @@ public class RechercheFormulaire extends FormulairePane{
 	 * @param fR
 	 * 			Indicateur de succès observable
 	 */
-	public RechercheFormulaire(FindResult<ArrayList<Utilisateur>> fR){
+	public RechercheFormulaire(FindResult<Utilisateur> fR){
 		super(fR);
-		fR.addObserver(this);
 		this.fac = new FormulaireRechercheControler(fR);
 		
 		JButton recherche = 	new JButton("Recherche");
 		JLabel nomL = 			new JLabel("Nom");
-		JLabel prenomL = 		new JLabel("Prénom                                   ");
+		JLabel emailL = 		new JLabel("Email                                    ");
 		JPanel grid1 = 			new JPanel();
 		JPanel grid2 = 			new JPanel();
 		JPanel border1 = 		new JPanel();	
@@ -70,8 +69,8 @@ public class RechercheFormulaire extends FormulairePane{
 		grid2.setLayout(gl2);
 		grid2.add(nomL);
 		grid2.add(nom);
-		grid2.add(prenomL);
-		grid2.add(prenom);
+		grid2.add(emailL);
+		grid2.add(email);
 		grid2.setBackground(Color.WHITE);
 		grid1.add(grid2);
 		grid1.setBackground(Color.WHITE);
@@ -100,12 +99,12 @@ public class RechercheFormulaire extends FormulairePane{
 	 */
 	class BoutonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			ArrayList<String> nomPrenom = new ArrayList<String>();
+			ArrayList<String> nomEmail = new ArrayList<String>();
 			
-			nomPrenom.add(nom.getText());
-			nomPrenom.add(prenom.getText());
+			nomEmail.add(nom.getText());
+			nomEmail.add(email.getText());
 			
-			fac.control(nomPrenom);
+			fac.control(nomEmail);
 		}
 	}
 	

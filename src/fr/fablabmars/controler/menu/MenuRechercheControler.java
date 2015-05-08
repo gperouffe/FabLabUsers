@@ -23,23 +23,23 @@ public class MenuRechercheControler extends MenuAbstractControler{
 	}
 
 	@Override
-	public void control(String bouton) {
-		if(bouton.contains("Succès")){
+	public void control(String menu) {
+		if(menu.contains("Succès")){
 			((CardMenu)this.obs).setPanel(1);		
-			}
-		else if(bouton.contains("Echec")){
+		}
+		else if(menu.contains("Echec")){
 			((CardMenu)this.obs).setPanel(0);
 		}
-		else if(bouton.contains("Facture")){
+		else if(menu.contains("Facture")){
 			((CardMenu)this.obs).setPanel(2);
 		}
-		else if(bouton.contains("Cotisation")){
+		else if(menu.contains("Cotisation")){
 			((CardMenu)this.obs).setPanel(3);
 		}
-		else if(bouton.contains("Modifier")){
+		else if(menu.contains("Modifier")){
 			((CardMenu)this.obs).setPanel(4);
 		}
-		else if(bouton.contains("Retour")){
+		else if(menu.contains("Retour")){
 			((CardMenu)this.obs).setPanel(0);
 		}
 	}

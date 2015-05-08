@@ -43,11 +43,11 @@ public class RechercheResultat extends ResultPane{
 	/**
 	 * Constructeur du panneau de résultats
 	 * 
-	 * @param qR
+	 * @param fR
 	 * 			Indicateur de succès observable des requêtes
 	 */
-	public RechercheResultat(FindResult<ArrayList<Utilisateur>> qR){
-		super(qR);
+	public RechercheResultat(FindResult<Utilisateur> fR){
+		super(fR);
 		JLabel nomL = 			new JLabel("Nom");
 		JLabel prenomL = 		new JLabel("Prénom");
 		JLabel etabL = 		new JLabel("Etablissement");
@@ -146,8 +146,6 @@ public class RechercheResultat extends ResultPane{
 		grid5.setBorder(title);
 		
 		this.add(grid7);
-		qR.addObserver(this);
-			
 	}
 
 	/**
@@ -168,8 +166,8 @@ public class RechercheResultat extends ResultPane{
 	public void update(Observable obs) {
 		if(obs == qR){
 			try{
-				if((((FindResult<ArrayList<Utilisateur>>)qR).getData())!=null){
-					Utilisateur util = (((((FindResult<ArrayList<Utilisateur>>)qR).getData())).get(0));
+				if((((FindResult<Utilisateur>)qR).getData())!=null){
+					Utilisateur util = (((((FindResult<Utilisateur>)qR).getData())));
 					nomR.setText(util.getNom());
 					prenomR.setText(util.getPrenom());
 					etabR.setText(util.getEtab());

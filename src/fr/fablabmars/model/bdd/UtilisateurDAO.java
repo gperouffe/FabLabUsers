@@ -192,12 +192,12 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		}
 	}
 	
-	public ArrayList<Utilisateur> findNomPrenom(String nom, String prenom) {
+	public Utilisateur findNomEmail(String nom, String email) {
 
 		if(this.connect!=null){
-			ArrayList<Utilisateur> utils = new ArrayList<Utilisateur>();
+			Utilisateur util = new Utilisateur();
 			
-			String query = new String("SELECT * FROM `gestionfablab`.`utilisateur` WHERE `nom` = ? AND `prenom` = ?");
+			String query = new String("SELECT * FROM `gestionfablab`.`utilisateur` WHERE `nom` = ? AND `email` = ?");
 			
 			PreparedStatement prepare = null;
 			
@@ -205,19 +205,12 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 				prepare = this.connect.prepareStatement(query);
 	
 				prepare.setString(1, nom);
-				prepare.setString(2, prenom);
+				prepare.setString(2, email);
 				
 				ResultSet res = prepare.executeQuery();
 				 
-				if(res.first() && res.isLast()){
-					utils.add(new Utilisateur(res.getInt("id"),res.getString("nom"),res.getString("prenom"),res.getString("etab"),res.getString("adresse"),res.getString("numero"),res.getString("email"),res.getBoolean("professionnel"),res.getBoolean("cotisant")));
-				}
-				else if (res.isAfterLast()){}
-				else{
-					res.beforeFirst();
-					while(res.next()){
-						utils.add(new Utilisateur(res.getInt("id"),res.getString("nom"),res.getString("prenom"),res.getString("etab"),res.getString("adresse"),res.getString("numero"),res.getString("email"),res.getBoolean("professionnel"),res.getBoolean("cotisant")));
-					}
+				if(res.first()){
+					util = new Utilisateur(res.getInt("id"),res.getString("nom"),res.getString("prenom"),res.getString("etab"),res.getString("adresse"),res.getString("numero"),res.getString("email"),res.getBoolean("professionnel"),res.getBoolean("cotisant"));
 				}
 				
 			} 
@@ -233,7 +226,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 				prepare.close();
 			}
 			catch(SQLException ex){}
-			return utils;
+			return util;
 		}
 		else{
 			return null;

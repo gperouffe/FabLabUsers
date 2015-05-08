@@ -30,6 +30,7 @@ public abstract class ResultPane extends ControlledPane implements Observer{
 	public ResultPane(QueryResult qR){
 		super();
 		this.qR=qR;
+		qR.addObserver(this);
 	}
 	
 	@Override

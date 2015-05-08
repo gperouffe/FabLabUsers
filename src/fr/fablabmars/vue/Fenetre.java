@@ -58,9 +58,9 @@ public class Fenetre extends JFrame{
 		listPaneUtil.add(new SaveFailure());
 		
 		ArrayList<ControlledPane> listPaneRech = new ArrayList<ControlledPane>();
-		FindResult<ArrayList<Utilisateur>> qR = new FindResult<ArrayList<Utilisateur>>();
-		listPaneRech.add(new RechercheFormulaire(qR));
-		listPaneRech.add(new RechercheResultat(qR));
+		FindResult<Utilisateur> fR = new FindResult<Utilisateur>();
+		listPaneRech.add(new RechercheFormulaire(fR));
+		listPaneRech.add(new RechercheResultat(fR));
 		
 		ArrayList<ControlledPane> listPaneContainer = new ArrayList<ControlledPane>();
 		listPaneContainer.add(new Accueil(etatConn));

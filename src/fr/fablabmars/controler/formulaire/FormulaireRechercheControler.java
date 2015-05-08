@@ -24,29 +24,27 @@ public class FormulaireRechercheControler extends FormulaireAbstractControler<Ar
 	 * @see FormulaireAbstractControler#FormulaireAbstractControler(fr.fablabmars.model.bdd.DAO, QueryResult)
 	 * @see FindResult
 	 */
-	public FormulaireRechercheControler(FindResult<ArrayList<Utilisateur>> fR) {
-		super(DAOFactory.getDAOUtilisateur(), fR);
+	public FormulaireRechercheControler(FindResult<Utilisateur> fR) {
+		super(fR);
 	}
 	
 	/**
 	 * Contrôle les données (nom, prénom) sur l'utilisateur recherché.
 	 * 
-	 * @param nomPrenom
+	 * @param nomEmail
 	 * 			Arraylist contenant le nom et le prénom de l'utilisateur recherché.
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public void control(ArrayList<String> nomPrenom) {
-		if(this.dao instanceof UtilisateurDAO){
-			UtilisateurDAO utilDao= (UtilisateurDAO)dao;
+	public void control(ArrayList<String> nomEmail) {
+		UtilisateurDAO utilDao= DAOFactory.getDAOUtilisateur();
 			
-			ArrayList<Utilisateur> resultat = utilDao.findNomPrenom(nomPrenom.get(0),nomPrenom.get(1));
-			if(resultat != null&& resultat.size()!=0){
-				((FindResult<ArrayList<Utilisateur>>)this.obs).success(resultat);
-			}
-			else{
-				((QueryResult)this.obs).failure();
-			}
+		Utilisateur resultat = utilDao.findNomEmail(nomEmail.get(0),nomEmail.get(1));
+		if(resultat != null){
+			((FindResult<Utilisateur>)this.obs).success(resultat);
+		}
+		else{
+			((QueryResult)this.obs).failure();
 		}
 	}
 }
